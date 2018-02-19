@@ -1,7 +1,7 @@
 
 # 6 Stone Kalah
 
-The game is implemented as a REST API with the following routes (in GameController). There is no UI.
+The game is implemented as a REST API with the following routes (in [GameController](https://github.com/wrlannen/kalah/blob/master/src/main/java/com/lannen/kalah/GameController.java)). There is no UI.
 
 
 ----------
@@ -16,7 +16,7 @@ Allows a player to start a new game.
  - None
   
 *Returns:*
- - A ResponseEntity containing the NewGame object, giving the player their id, position (north or south) and the game board. HTTP status CREATED (204).
+ - A ResponseEntity containing the [NewGame](https://github.com/wrlannen/kalah/blob/master/src/main/java/com/lannen/kalah/domain/NewGame.java) object, giving the player their id, position (north or south) and the [GameBoard](https://github.com/wrlannen/kalah/blob/master/src/main/java/com/lannen/kalah/domain/GameBoard.java). HTTP status CREATED (204).
 
 
 ----------
@@ -32,7 +32,7 @@ Allows a player to join an existing game with the given gameId.
 
 *Returns:*
 
- - On success, a ResponseEntity containing the NewGame object, giving the player their id, position (north or south) and the game board. HTTP status OK (200). 
+ - On success, a ResponseEntity containing the [NewGame](https://github.com/wrlannen/kalah/blob/master/src/main/java/com/lannen/kalah/domain/NewGame.java) object, giving the player their id, position (north or south) and the [GameBoard](https://github.com/wrlannen/kalah/blob/master/src/main/java/com/lannen/kalah/domain/GameBoard.java). HTTP status OK (200). 
  - Failing calls will return a ResponseEntity with a suitable HTTP error code: 
 	 - NOT_FOUND (404): game not found with the given id. 
 	 - BAD_REQUEST (400): the game is already in progress.
@@ -50,7 +50,7 @@ gameId - the id of the game to check
 
 *Returns:*
 
- - On success, a ResponseEntity containing a NextPlayer object, giving the player the next player position. HTTP status OK (200). 
+ - On success, a ResponseEntity containing a [NextPlayer](https://github.com/wrlannen/kalah/blob/master/src/main/java/com/lannen/kalah/domain/NextPlayer.java) object, giving the player the next player position. HTTP status OK (200). 
  - Failing calls will return a ResponseEntity with a suitable HTTP error code: 
 	 - NOT_FOUND (404): game not found with the given id. 
 	 - BAD_REQUEST (400): the game is not in progress.
@@ -61,7 +61,7 @@ gameId - the id of the game to check
 
 **POST /game/{gameId}/play**
 
-Allows a player to play a move by sending a GameMove object with their playerId and chosen pitId (0-5) to pick up stones from.
+Allows a player to play a move by sending a [GameMove](https://github.com/wrlannen/kalah/blob/master/src/main/java/com/lannen/kalah/domain/GameMove.java) object with their playerId and chosen pitId (0-5) to pick up stones from.
 
 *Parameters:*
 
@@ -71,7 +71,7 @@ Allows a player to play a move by sending a GameMove object with their playerId 
 
 *Returns:*
 
- - On success, a ResponseEntity containing the updated GameBoard object. 
+ - On success, a ResponseEntity containing the updated [GameBoard](https://github.com/wrlannen/kalah/blob/master/src/main/java/com/lannen/kalah/domain/GameBoard.java) object. 
  - Failing calls will return a ResponseEntity with a suitable HTTP error code:
 	 - BAD_REQUEST (400): the GameMove object is not suitably populated, or the chosen pit has no stones, or is not in the allowable range (0-5). 
 	 - NOT_FOUND (404): game not found with the given id. 
