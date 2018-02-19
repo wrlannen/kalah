@@ -3,9 +3,6 @@
 The game is implemented as a REST API with the following routes (in GameController). There is no UI.
 
 
-----------
-
-
 **POST /game** 
 Allows a player to start a new game.
 
