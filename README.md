@@ -3,22 +3,13 @@
 The game is implemented as a REST API with the following routes (in GameController). There is no UI.
 
 
-**POST /game** 
+**POST /game**: Allows a player to start a new game.
 
-Allows a player to start a new game.
+**POST /game/{gameId}**: Allows a player to join an existing game with the given gameId.
 
-**POST /game/{gameId}** 
+**GET /game/{gameId}**: Allows a player to check whether the next player is north or south.
 
-Allows a player to join an existing game with the given gameId.
-
-**GET /game/{gameId}** 
-
-Allows a player to check whether the next player is north or south.
-
-**POST /game/{gameId}/play** 
-
-Allows a player to play a move by sending a GameMove object with their playerId and chosen pitId (0-5) to pick up stones from.
-
+**POST /game/{gameId}/play**: Allows a player to play a move by sending a GameMove object with their playerId and chosen pitId (0-5) to pick up stones from.
 
 
 Please refer to the Javadocs in the docs directory for further info.
