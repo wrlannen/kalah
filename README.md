@@ -85,6 +85,8 @@ Please refer to the Javadocs in the docs directory for further info.
 
 The implementation uses SpringBoot and can therefore be run with ./gradlew bootRun.
 
+Unit tests can be found in [GameControllerTest](https://github.com/wrlannen/kalah/blob/master/src/test/java/com/lannen/kalah/GameControllerTest.java).
+
 
 ----------
 
