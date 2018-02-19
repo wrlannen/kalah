@@ -94,5 +94,6 @@ Unit tests can be found in [GameControllerTest](https://github.com/wrlannen/kala
 TODOs:
 
  1. There should be a WebSocket in order to push down the updated game board to the player during player, and to notify them of their turn.
- 2. Unit tests should be added to test the error conditions for the routes, i.e. passing invalid data, etc.
- 3. The playGame unit test tests 1000 plays of the game and checks that the winner is correct based on the kalah stone counts, however it is not actually testing that the mechanics of the game are working correctly.
+ 2. In progress games are currently stored in a Map and not cleaned up. In order to make the application stateless, this could be moved to an external data store such as Redis, and cleaned up or set to expire after some time.
+ 3. Unit tests should be added to test the error conditions for the routes, i.e. passing invalid data, etc.
+ 4. The playGame unit test tests 1000 plays of the game and checks that the winner is correct based on the kalah stone counts, however it is not actually testing that the mechanics of the game are working correctly.
