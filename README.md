@@ -1,44 +1,85 @@
+
 # 6 Stone Kalah
 
 The game is implemented as a REST API with the following routes (in GameController). There is no UI.
+
+
+----------
 
 
 **POST /game**
 
 Allows a player to start a new game.
 
-Returns:
-A ResponseEntity containing the NewGame object, giving the player their id, position (north or south) and the game board. HTTP status CREATED (204).
+*Parameters:*
+ 
+ - None
+  
+*Returns:*
+ - A ResponseEntity containing the NewGame object, giving the player their id, position (north or south) and the game board. HTTP status CREATED (204).
+
+
+----------
+
 
 **POST /game/{gameId}**
 
 Allows a player to join an existing game with the given gameId.
 
-Parameters:
-gameId - the id of the game to join
+*Parameters:*
 
-Returns:
-On success, a ResponseEntity containing the NewGame object, giving the player their id, position (north or south) and the game board. HTTP status OK (200). Failing calls will return a ResponseEntity with a suitable HTTP error code: NOT_FOUND (404): game not found with the given id. BAD_REQUEST (400): the game is already in progress.
+ - gameId - the id of the game to join
+
+*Returns:*
+
+ - On success, a ResponseEntity containing the NewGame object, giving the player their id, position (north or south) and the game board. HTTP status OK (200). 
+ - Failing calls will return a ResponseEntity with a suitable HTTP error code: 
+	 - NOT_FOUND (404): game not found with the given id. 
+	 - BAD_REQUEST (400): the game is already in progress.
+
+
+----------
+
 
 **GET /game/{gameId}**
 
 Allows a player to check whether the next player is north or south.
 
-Parameters:
+*Parameters:*
 gameId - the id of the game to check
 
-Returns:
-On success, a ResponseEntity containing a NextPlayer object, giving the player the next player position. HTTP status OK (200). Failing calls will return a ResponseEntity with a suitable HTTP error code: NOT_FOUND (404): game not found with the given id. BAD_REQUEST (400): the game is not in progress.
+*Returns:*
+
+ - On success, a ResponseEntity containing a NextPlayer object, giving the player the next player position. HTTP status OK (200). 
+ - Failing calls will return a ResponseEntity with a suitable HTTP error code: 
+	 - NOT_FOUND (404): game not found with the given id. 
+	 - BAD_REQUEST (400): the game is not in progress.
 
 
-**POST /game/{gameId}/play**: Allows a player to play a move by sending a GameMove object with their playerId and chosen pitId (0-5) to pick up stones from.
+----------
 
-Parameters:
-gameId - the id of the game to join
-gameMove - the suitably populated GameMove object
 
-Returns:
-On success, a ResponseEntity containing the updated GameBoard object. Failing calls will return a ResponseEntity with a suitable HTTP error code: BAD_REQUEST (400): the GameMove object is not suitably populated, or the chosen pit has no stones, or is not in the allowable range (0-5). NOT_FOUND (404): game not found with the given id. UNAUTHORIZED (401): the playerId given on the GameMove object is not the next player.
+**POST /game/{gameId}/play**
+
+Allows a player to play a move by sending a GameMove object with their playerId and chosen pitId (0-5) to pick up stones from.
+
+*Parameters:*
+
+ - gameId - the id of the game to join 
+ - gameMove - the suitably populated
+   GameMove object
+
+*Returns:*
+
+ - On success, a ResponseEntity containing the updated GameBoard object. 
+ - Failing calls will return a ResponseEntity with a suitable HTTP error code:
+	 - BAD_REQUEST (400): the GameMove object is not suitably populated, or the chosen pit has no stones, or is not in the allowable range (0-5). 
+	 - NOT_FOUND (404): game not found with the given id. 
+	 - UNAUTHORIZED (401): the playerId given on the GameMove object is not the next player.
+
+
+----------
+
 
 Please refer to the Javadocs in the docs directory for further info.
 
